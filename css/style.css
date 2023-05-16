@@ -58,8 +58,8 @@ nav{
 .logo__name{
     font-size: x-large;
 }
-.toggler{
-    height: 1.5rem;
+.toggler, .toggled{
+    height: 2.3rem;
     width: 2.3rem;
     box-sizing: border-box;
     flex-direction: column;
@@ -68,6 +68,7 @@ nav{
     gap: 10px 0;
     cursor: pointer;
     display: none;
+    border: 1px solid rgba(245, 222, 179, 0.452);
 }
 .bar{
     width: 80%;
@@ -120,11 +121,29 @@ nav{
     .logo{
         max-width: 30vw;
     }
-}
-@media screen and (max-width: 680px) {
+  }
+  @media screen and (max-width: 680px) {
     
-    .toggler{
-        display: flex;
+    .toggler, .toggled{
+      display: flex;
+    }
+    .toggled{
+      justify-content: center;
+      gap: 0;
+       border: 1px solid wheat;
+    }
+    .toggled .bar:nth-child(1){
+        transform: rotate(45deg) ;
+        /* transform: translateY(1.015rem) rotate(45deg) ; */
+    }
+    .toggled .bar:nth-child(3){
+        transform: rotate(-45deg) ;
+        /* transform: translateY(-1.015rem) rotate(-45deg) ; */
+
+    }
+    .toggled .bar:nth-child(2){
+      display: none;
+      transition: display, 1s ease;
     }
     .links{
         display: none;
@@ -134,34 +153,6 @@ nav{
     }
     .logo{
         max-width: 40vw;
-    }
-    .toggled{
-        height: 1.5rem;
-        width: 2.3rem;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items:center;
-        justify-content: center;
-        gap: 10px 0;
-        cursor: pointer;
-    }
-    .toggled .bar:nth-child(1){
-        transform: rotate(45deg) translateY(1.015rem);
-    }
-    .toggled .bar:nth-child(3){
-        transform: rotate(-45deg) translateY(-1.015rem);
-    }
-    .toggled .bar:nth-child(2){
-        animation: togl 0.5s linear 0s 1 forwards;
-    }
-    @keyframes togl {
-       from{
-        opacity: 1;
-       }
-       to{
-        opacity: 0;
-       }
     }
     .expandable{
         width: 100vw;
@@ -371,6 +362,9 @@ nav{
   @media screen and (max-width: 940px) {
     .bestseller__chip{
         clip-path: none;
+    }
+    .product__img{
+      height: 25vh;
     }
     .product__img img{
         width: 25vw;
